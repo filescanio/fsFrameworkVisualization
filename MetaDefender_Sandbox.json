@@ -1,0 +1,41 @@
+{
+  "testMetadata": {
+    "testID": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "testDate": "2025-04-30",
+    "testerInfo": {
+      "name": "VENAK SECURITY",
+      "contact": "contact@venaksecurity.example.com"
+    },
+    "vendorName": "OPSWAT MetaDefender Sandbox",
+    "vendorWebsite": "https://www.opswat.com",
+    "vendorContactEmail": "jan.miller@opswat.com",
+    "productVersion": "2.2.1",
+    "useCasesTested": [
+      "Large-Scale Malware Processing and Detection",
+      "Zero-Day Malware Detection",
+      "Air-Gapped Critical Infrastructure Security"
+    ],
+    "sampleSetDetails": {
+      "description": "Wildlist samples (APT-style), AI-generated zero-day samples using proprietary simulator, Fileless/Offline malware for Air-Gap test.",
+      "size": 100,
+      "benchmarkToolsUsed": [
+        "Venak Security AI Malware Simulator"
+      ]
+    },
+    "frameworkVersion": "1.0",
+    "additionalNotes": "Testing conducted by AMTSO member Venak Security. Evaluated use cases listed. See full report 'Meta Defender Sandbox Testing Analysis V2.pdf' (April 2025) for details and feature-level scores. KPI scores derived from specific weighted results provided by user."
+  },
+  "kpiScores": {
+    "analysisCapability": 9.09,
+    "antiEvasionTechnology": 10.0,
+    "speedThroughputScale": 10.0,
+    "reportingThreatIntelligence": 9.66,
+    "integrationsAutomation": 10.0,
+    "securityDeploymentMaintenance": 10.0
+  },
+  "keyPerformanceMetrics": {
+    "falsePositiveRatePercent": 9.0,
+    "falseNegativeRatePercent": 9.0,
+    "averageProcessingTimeSeconds": 8.2
+  }
+}

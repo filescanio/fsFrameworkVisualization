@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandbox Vendor Landscape</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+<body>
+    <h1>Sandbox Vendor Landscape</h1>
+    <p class="intro-description">
+        Visualize sandbox vendor test results based on the AMTSO Sandbox Evaluation Framework.
+        Adjust KPI weights below to customize the Quadrant view or select a Use Case Preset.
+        The landscape map updates automatically. The Radar Chart shows raw scores across all KPIs.
+        <span class="download-link"> | <a href="/api/rawdata" download="sandbox_landscape_raw_data.json">Download Raw Data (JSON)</a></span>
+    </p>
+
+    <div class="controls">
+        <div class="preset-control">
+             <label for="use-case-select">Use Case Preset (Affects Quadrant):</label>
+            <select id="use-case-select">
+                <option value="Custom">Custom Weights</option>
+                {% for use_case in weight_profiles.keys() %}
+                    <option value="{{ use_case }}" {% if use_case == "Balanced (Equal Weight)" %}selected{% endif %}>{{ use_case }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <hr class="separator">
+        <h3>Adjust KPI Weights (Affects Quadrant)</h3>
+        <div class="sliders-container">
+            {% for key, name in kpis.items() %}
+            <div class="slider-group">
+                <label for="{{ key }}" title="{{ name }}">{{ name }}: </label>
+                <input type="range" id="{{ key }}" name="{{ key }}" min="0" max="10" step="0.5" value="{{ default_weights.get(key, 5) }}" class="kpi-slider">
+                <span class="slider-value" id="{{ key }}-value">{{ default_weights.get(key, 5) }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="charts-area">
+        <div class="chart-container quadrant-chart">
+            <h4>Quadrant View (Weighted)</h4> <div class="canvas-wrapper"> <canvas id="landscapeChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-container radar-chart-area">
+             <h4>Overall KPI Profile (Raw Scores 0-10)</h4> <div class="canvas-wrapper"> <canvas id="radarChart"></canvas>
+             </div>
+             <div id="radar-vendor-selector" class="radar-controls">
+                 <h5>Show Vendors on Radar:</h5>
+                 <p>Loading vendors...</p>
+             </div>
+        </div>
+    </div>
+
+    <template id="error-template">
+        <div style="text-align: center; padding: 50px; color: #a94442; background-color: #f2dede; border: 1px solid #ebccd1; border-radius: 4px; margin: 50px auto; max-width: 600px;">
+            <h1>Application Error</h1>
+            <h2>Error Loading Data</h2>
+            <p>{{ message | safe }}</p>
+            <p><a href="/">Go back</a></p>
+        </div>
+    </template>
+
+    <script>
+        const axisLabels = {{ axis_labels | tojson }};
+        const kpiKeys = {{ kpis.keys() | list | tojson }};
+        const weightProfiles = {{ weight_profiles | tojson }};
+        const radarLabels = {{ radar_labels | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

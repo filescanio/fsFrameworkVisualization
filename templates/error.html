@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div style="text-align: center; padding: 50px; color: #a94442; background-color: #f2dede; border: 1px solid #ebccd1; border-radius: 4px; margin: 50px auto; max-width: 600px;">
+        <h1>Application Error</h1>
+        <h2>Error Loading Data</h2>
+        <p>{{ message | safe }}</p>
+        <p><a href="/">Go back</a></p>
+    </div>
+</body>
+</html>

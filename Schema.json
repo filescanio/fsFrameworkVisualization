@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AMTSO Sandbox Evaluation Result",
+  "description": "Schema for submitting sandbox evaluation results based on the AMTSO framework.",
+  "type": "object",
+  "properties": {
+    "testMetadata": {
+      "description": "Information about the testing process and environment.",
+      "type": "object",
+      "properties": {
+        "testID": {
+          "description": "Unique identifier for this test submission.",
+          "type": "string",
+          "format": "uuid"
+        },
+        "testDate": {
+          "description": "Date when the testing was concluded.",
+          "type": "string",
+          "format": "date"
+        },
+        "testerInfo": {
+          "description": "Information about the person or organization conducting the test.",
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "description": "Name of the tester or testing organization." },
+            "contact": { "type": "string", "format": "email", "description": "Contact email for the tester." }
+          },
+          "required": ["name"]
+        },
+        "vendorName": {
+          "description": "Name of the sandbox vendor being evaluated.",
+          "type": "string"
+        },
+        "vendorWebsite": {
+          "description": "Optional: Website URL of the sandbox vendor.",
+          "type": "string",
+          "format": "uri"
+        },
+        "vendorContactEmail": {
+            "description": "Optional: General contact email for the vendor.",
+            "type": "string",
+            "format": "email"
+        },
+        "productVersion": {
+          "description": "Version of the sandbox product tested.",
+          "type": "string"
+        },
+        "useCasesTested": {
+            "description": "List of specific use cases evaluated in this test, typically aligning with AMTSO framework categories.",
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "sampleSetDetails": {
+            "description": "Details about the sample set used for testing.",
+            "type": "object",
+             "properties": {
+                "description": { "type": "string", "description": "Brief description of the sample set (e.g., source, type of malware/files)." },
+                "size": { "type": "integer", "description": "Number of samples in the set.", "minimum": 1 },
+                "benchmarkToolsUsed": {
+                    "description": "List of any specific benchmark tools used (e.g., pafish, al-khaser).",
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            },
+            "required": ["description", "size"]
+        },
+        "frameworkVersion": {
+            "description": "Version of the AMTSO Sandbox Evaluation Framework used.",
+            "type": "string",
+            "default": "1.0"
+        },
+        "additionalNotes": {
+            "description": "Any other relevant metadata or comments about the test setup or execution.",
+            "type": "string"
+        }
+      },
+      "required": ["testID", "testDate", "testerInfo", "vendorName", "productVersion", "useCasesTested", "sampleSetDetails", "frameworkVersion"]
+    },
+    "kpiScores": {
+      "description": "Scores for each Key Performance Indicator (KPI) based on the framework. Scores range from 0 to 10.",
+      "type": "object",
+      "properties": {
+        "analysisCapability": {
+          "description": "Score for Analysis Capability KPI.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "antiEvasionTechnology": {
+          "description": "Score for Anti-Evasion Technology KPI.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "speedThroughputScale": {
+          "description": "Score for Speed/Throughput/Scale KPI.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "reportingThreatIntelligence": {
+          "description": "Score for Reporting and Threat Intelligence KPI.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "integrationsAutomation": {
+          "description": "Score for Integrations and Automation KPI.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "securityDeploymentMaintenance": {
+          "description": "Score for Security, Deployment and Maintenance KPI.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "analysisCapability",
+        "antiEvasionTechnology",
+        "speedThroughputScale",
+        "reportingThreatIntelligence",
+        "integrationsAutomation",
+        "securityDeploymentMaintenance"
+      ]
+    },
+    "keyPerformanceMetrics": {
+        "description": "Optional: Specific performance metrics observed during testing.",
+        "type": "object",
+        "properties": {
+            "falsePositiveRatePercent": {
+                "description": "False Positive (FP) rate as a percentage (e.g., 9 for 9%).",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+            },
+            "falseNegativeRatePercent": {
+                "description": "False Negative (FN) rate as a percentage (e.g., 9 for 9%).",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+            },
+            "averageProcessingTimeSeconds": {
+                "description": "Average time in seconds to process a single sample.",
+                "type": "number",
+                "minimum": 0
+            }
+        },
+        "additionalProperties": false
+    }
+  },
+  "required": ["testMetadata", "kpiScores"]
+}
