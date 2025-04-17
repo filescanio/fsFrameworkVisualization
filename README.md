@@ -109,25 +109,21 @@ The application expects the `data/results.json` file to contain a JSON **list** 
 ]
 ```
 
-* 'testMetadata.vendorName' and 'kpiScores' (with all 6 KPIs) are essential for the application to function correctly.
-
-* 'testMetadata.testDate' is used in tooltips.
-
-* 'keyPerformanceMetrics' are used in tooltips if present.
+* `testMetadata.vendorName` and `kpiScores` (with all 6 KPIs) are essential for the application to function correctly.
+* `testMetadata.testDate` is used in tooltips.
+* `keyPerformanceMetrics` are used in tooltips if present.
 
 ## Acknowledgements
 
 * This tool visualizes data based on the concepts and Key Performance Indicators defined in the **AMTSO Sandbox Evaluation Framework**. Our thanks to the Anti-Malware Testing Standards Organization (AMTSO) and its members for their work in standardizing security testing.
-
 * The framework document used as a reference can be found here: https://www.amtso.org/wp-content/uploads/2025/03/AMTSO-Sandbox-Evaluation-Framework_FINAL_2025-03.pdf
-
 * We acknowledge the contributions of the framework authors listed in the document:
 
-* Jan Miller (Lead Author) - OPSWAT
-* Ralf Hund - VMRay
-* Andrey Voitenko - VMRay
-* Nima Bagheri - Venak Security
-* Kagan Isildak - Malwation
+    * Jan Miller (Lead Author) - OPSWAT
+    * Ralf Hund - VMRay
+    * Andrey Voitenko - VMRay
+    * Nima Bagheri - Venak Security
+    * Kagan Isildak - Malwation
 
 ## Future Enhancements
 
