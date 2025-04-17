@@ -6,6 +6,8 @@ This web application provides an interactive way to visualize and compare sandbo
 
 The goal is to offer a transparent and flexible tool for SOC analysts, malware researchers, security managers, and other stakeholders evaluating sandbox solutions.
 
+![Application Preview](preview.png "Sandbox Vendor Landscape Tool Preview")
+
 ## Features
 
 * **Quadrant Chart View:** Displays vendors on a 2D scatter plot based on weighted scores derived from selected KPIs. Default axes represent "Detection & Evasion Capability" vs. "Speed & Operational Efficiency".
