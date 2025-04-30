@@ -17,7 +17,7 @@
       "analysisCapability": 9.09, "antiEvasionTechnology": 10.0, "speedThroughputScale": 10.0,
       "reportingThreatIntelligence": 9.66, "integrationsAutomation": 10.0, "securityDeploymentMaintenance": 10.0
     },
-    "keyPerformanceMetrics": { "falsePositiveRatePercent": 9.0, "falseNegativeRatePercent": 9.0, "averageProcessingTimeSeconds": 8.2 }
+    "keyPerformanceMetrics": { "falsePositiveRatePercent": 5.0, "falseNegativeRatePercent": 5.0, "averageProcessingTimeSeconds": 8.2 }
   },
   {
     "testMetadata": { "vendorName": "Sandbox Vendor B (Dummy)", "testDate": "2025-04-15" },
